@@ -35,6 +35,7 @@ function ContactPage() {
       name: String(fd.get("name") || ""),
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
+      mcNumber: String(fd.get("mcNumber") || ""),
       truck: String(fd.get("truck") || ""),
       message: String(fd.get("message") || ""),
     };
@@ -111,9 +112,13 @@ function ContactPage() {
                     <Input id="phone" name="phone" className="mt-1.5" placeholder="+1 555 555 5555" />
                   </div>
                   <div>
-                    <Label htmlFor="truck">Truck type</Label>
-                    <Input id="truck" name="truck" className="mt-1.5" placeholder="Reefer, Flatbed, Dry Van..." />
+                    <Label htmlFor="mcNumber">MC Number <span className="text-muted-foreground font-normal">(Optional)</span></Label>
+                    <Input id="mcNumber" name="mcNumber" className="mt-1.5" placeholder="e.g. 123456" />
                   </div>
+                </div>
+                <div>
+                  <Label htmlFor="truck">Truck type</Label>
+                  <Input id="truck" name="truck" className="mt-1.5" placeholder="Reefer, Flatbed, Dry Van..." />
                 </div>
                 <div>
                   <Label htmlFor="message">Message</Label>
