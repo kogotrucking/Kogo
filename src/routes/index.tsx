@@ -64,7 +64,7 @@ const steps = [
 function HomePage() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const opacity1 = useTransform(scrollY, [0, 800], [0.7, 0.1]);
+  const opacity1 = useTransform(scrollY, [0, 800], [1, 0.2]);
 
   return (
     <SiteLayout>
@@ -75,8 +75,8 @@ function HomePage() {
         </motion.div>
         
         {/* Refined gradient overlay for text legibility while letting image pop */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
-        <div className="absolute inset-0 bg-black/20" /> {/* Slight uniform darkening */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-black/10" /> {/* Slight uniform darkening */}
 
         <div className="container relative mx-auto px-4 py-20 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
