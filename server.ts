@@ -13,7 +13,7 @@ async function startServer() {
   // API Routes
   app.post("/api/contact", async (req, res) => {
     try {
-      const { name, email, phone, truck, message } = req.body;
+      const { name, email, phone, truck, mcNumber, message } = req.body;
       
       const resendApiKey = process.env.RESEND_API_KEY;
       if (!resendApiKey) {
@@ -31,6 +31,7 @@ async function startServer() {
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+          <p><strong>MC Number:</strong> ${mcNumber || 'N/A'}</p>
           <p><strong>Truck Type:</strong> ${truck || 'N/A'}</p>
           <p><strong>Message:</strong></p>
           <p>${message.replace(/\n/g, '<br>')}</p>
