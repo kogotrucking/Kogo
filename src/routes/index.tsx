@@ -79,7 +79,7 @@ function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent" />
         <div className="absolute inset-0 bg-black/10" /> {/* Slight uniform darkening */}
 
-        <div className="container relative mx-auto px-4 pt-12 pb-16 md:py-20 md:px-6">
+        <div className="container relative mx-auto px-4 pt-[60px] pb-12 md:py-20 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -91,7 +91,7 @@ function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.5, ease: "backOut" }}
-                className="mb-4 md:mb-6 mt-4 md:mt-0 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent backdrop-blur-md"
+                className="mb-4 md:mb-6 mt-2 md:mt-0 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent backdrop-blur-md"
               >
                 <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
                 Trusted by 500+ Owner-Operators
@@ -101,7 +101,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-4xl font-extrabold leading-tight tracking-tight md:text-7xl lg:leading-[1.1]"
+                className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight md:text-7xl lg:leading-[1.1]"
               >
                 You Drive. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent via-accent to-red-600">We Dispatch.</span> <br />
@@ -112,7 +112,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="mt-4 text-xl font-medium text-white/90 md:text-2xl"
+                className="mt-3 text-lg font-medium text-white/90 md:text-2xl"
               >
                 MORE LOADS. <span className="text-accent">MORE MILES.</span> MORE PROFITS.
               </motion.p>
