@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Toaster } from "@/components/ui/sonner";
 
-const SITE_URL = "https://kogodispatchers.com";
+const SITE_URL = "https://www.kogodispatchers.com";
 const DEFAULT_TITLE =
   "KOGO Dispatchers | Truck Dispatch Services for Owner-Operators & Fleets";
 const DEFAULT_DESC =
