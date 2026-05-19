@@ -91,7 +91,7 @@ function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.5, ease: "backOut" }}
-                className="mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent backdrop-blur-md"
+                className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent backdrop-blur-md"
               >
                 <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
                 Trusted by 500+ Owner-Operators
@@ -112,7 +112,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="mt-6 text-xl font-medium text-white/90 md:text-2xl"
+                className="mt-4 text-xl font-medium text-white/90 md:text-2xl"
               >
                 MORE LOADS. <span className="text-accent">MORE MILES.</span> MORE PROFITS.
               </motion.p>
@@ -121,7 +121,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="mt-4 max-w-xl text-base text-white/70 md:text-lg leading-relaxed"
+                className="mt-3 max-w-xl text-base text-white/70 md:text-lg leading-relaxed"
               >
                 Partner with a reliable team that works for your success. We find high-paying loads,
                 handle paperwork, negotiate rates and keep your trucks moving across the USA.
@@ -131,7 +131,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="mt-10 flex flex-col sm:flex-row gap-4"
+                className="mt-8 flex flex-col sm:flex-row gap-4"
               >
                 <Button asChild size="lg" className="h-14 px-8 text-base font-bold bg-accent text-accent-foreground shadow-[0_0_40px_-10px_rgba(255,0,0,0.5)] hover:bg-accent/90 hover:shadow-[0_0_60px_-15px_rgba(255,0,0,0.6)] transition-all duration-300">
                   <Link to="/contact">Get Started Now <ArrowRight className="ml-2 h-5 w-5" /></Link>
