@@ -1,73 +1,100 @@
-import express from "express";
-import path from "path";
-import { createServer as createViteServer } from "vite";
-import { Resend } from "resend";
+// Vercel Serverless Function — Node runtime
+// Receives the contact form payload and sends it via Resend.
+// Set RESEND_API_KEY (and optionally CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL)
+// in the Vercel project's Environment Variables.
 
-async function startServer() {
-  const app = express();
-  const PORT = 3000;
+import { z } from "zod";
 
-  // Middleware to parse JSON bodies
-  app.use(express.json());
+const ContactSchema = z.object({
+  name: z.string().trim().min(1).max(100),
+  email: z.string().trim().email().max(255),
+  phone: z.string().trim().max(50).optional().or(z.literal("")),
+  mcNumber: z.string().trim().min(1, "MC Number is required").max(50),
+  truck: z.string().trim().max(100).optional().or(z.literal("")),
+  message: z.string().trim().min(1).max(2000),
+});
 
-  // API Routes
-  app.post("/api/contact", async (req, res) => {
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+export default async function handler(req: any, res: any) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  let body: unknown = req.body;
+  if (typeof body === "string") {
     try {
-      const { name, email, phone, truck, mcNumber, message } = req.body;
-      
-      const resendApiKey = process.env.RESEND_API_KEY;
-      if (!resendApiKey) {
-        return res.status(500).json({ error: "RESEND_API_KEY environment variable is not set." });
-      }
-
-      const resend = new Resend(resendApiKey);
-
-      const data = await resend.emails.send({
-        from: 'KOGO Contact <noreply@kogodispatchers.com>', // User's verified domain
-        to: 'kogotrucking@gmail.com', // Sends to the user who requested this
-        subject: `New Contact Form Submission from ${name}`,
-        html: `
-          <h3>New Contact Request</h3>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-          <p><strong>MC Number:</strong> ${mcNumber || 'N/A'}</p>
-          <p><strong>Truck Type:</strong> ${truck || 'N/A'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        `
-      });
-
-      res.status(200).json({ success: true, data });
-    } catch (error: any) {
-      console.error("Resend error:", error);
-      res.status(500).json({ error: error.message || "Failed to send email" });
+      body = JSON.parse(body);
+    } catch {
+      return res.status(400).json({ error: "Invalid JSON body" });
     }
-  });
+  }
 
-  app.get("/api/health", (req, res) => {
-    res.json({ status: "ok" });
-  });
+  const parsed = ContactSchema.safeParse(body);
+  if (!parsed.success) {
+    return res.status(400).json({ error: "Invalid form data", details: parsed.error.flatten() });
+  }
+  const data = parsed.data;
 
-  // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    // Fallback for SPA routing depending on express version (using * for v4)
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({
+      error: "Email service is not configured. RESEND_API_KEY is missing.",
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
+  const toEmail = process.env.CONTACT_TO_EMAIL || "kogotrucking@gmail.com";
+  
+  // Since the user attached their own domain to Resend, sending FROM a verified domain is much better for deliverability.
+  // Using onboarding@resend.dev works only if sending to the registered email in Resend, but providing a custom from email ensures it uses their custom domain properly.
+  const fromEmail =
+    process.env.CONTACT_FROM_EMAIL || "KOGO Contact <noreply@kogodispatchers.com>"; // assuming their domain is kogodispatchers.com. It's safe to use onboarding@resend.dev fallback if they haven't verified a specific from-address, but Resend prefers using your own domain like noreply@yourdomain.com
 
-startServer();
+  const html = `
+    <h2>New Contact Form Submission — KOGO Dispatchers</h2>
+    <table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+      <tr><td style="padding:6px 12px;font-weight:bold;">Name:</td><td style="padding:6px 12px;">${escapeHtml(data.name)}</td></tr>
+      <tr><td style="padding:6px 12px;font-weight:bold;">Email:</td><td style="padding:6px 12px;">${escapeHtml(data.email)}</td></tr>
+      <tr><td style="padding:6px 12px;font-weight:bold;">Phone:</td><td style="padding:6px 12px;">${escapeHtml(data.phone || "—")}</td></tr>
+      <tr><td style="padding:6px 12px;font-weight:bold;">MC Number:</td><td style="padding:6px 12px;">${escapeHtml(data.mcNumber || "—")}</td></tr>
+      <tr><td style="padding:6px 12px;font-weight:bold;">Truck Type:</td><td style="padding:6px 12px;">${escapeHtml(data.truck || "—")}</td></tr>
+      <tr><td style="padding:6px 12px;font-weight:bold;vertical-align:top;">Message:</td><td style="padding:6px 12px;white-space:pre-wrap;">${escapeHtml(data.message)}</td></tr>
+    </table>
+  `;
+
+  try {
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [toEmail],
+        reply_to: data.email,
+        subject: `New contact: ${data.name}${data.truck ? ` (${data.truck})` : ""}`,
+        html,
+      }),
+    });
+
+    if (!r.ok) {
+      const errText = await r.text();
+      console.error("Resend error:", r.status, errText);
+      return res.status(502).json({ error: `Failed to send email (${r.status})` });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (err: any) {
+    console.error("Contact API error:", err);
+    return res.status(500).json({ error: err?.message || "Unexpected error" });
+  }
+}

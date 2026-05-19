@@ -9,7 +9,7 @@ const ContactSchema = z.object({
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(50).optional().or(z.literal("")),
-  mcNumber: z.string().trim().max(50).optional().or(z.literal("")),
+  mcNumber: z.string().trim().min(1, "MC Number is required").max(50),
   truck: z.string().trim().max(100).optional().or(z.literal("")),
   message: z.string().trim().min(1).max(2000),
 });

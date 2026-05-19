@@ -112,8 +112,8 @@ function ContactPage() {
                     <Input id="phone" name="phone" className="mt-1.5" placeholder="+1 555 555 5555" />
                   </div>
                   <div>
-                    <Label htmlFor="mcNumber">MC Number <span className="text-muted-foreground font-normal">(Optional)</span></Label>
-                    <Input id="mcNumber" name="mcNumber" className="mt-1.5" placeholder="e.g. 123456" />
+                    <Label htmlFor="mcNumber">MC Number</Label>
+                    <Input id="mcNumber" name="mcNumber" required className="mt-1.5" placeholder="e.g. 123456" />
                   </div>
                 </div>
                 <div>
