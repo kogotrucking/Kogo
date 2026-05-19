@@ -40,7 +40,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-white/80">
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-accent" />0811 Erdman Prairie, CA 1101</li>
             <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-accent" />+1 (234) 567 890 00</li>
-            <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-accent" />info@kogodispatchers.com</li>
+            {/* <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-accent" />info@kogodispatchers.com</li> */}
           </ul>
         </div>
       </div>

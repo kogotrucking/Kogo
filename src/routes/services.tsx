@@ -10,7 +10,7 @@ import heroImg from "@/assets/hero-services.webp";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Truck Dispatch Services — Load Sourcing, Rate Negotiation & 24/7 Support" },
+      { title: "Truck Dispatch Services | Load Sourcing, Rate Negotiation & 24/7 Support" },
       { name: "description", content: "Full-service truck dispatch: high-paying freight load sourcing, rate negotiation, route optimization, paperwork management and 24/7 dispatch support." },
       { name: "keywords", content: "truck load sourcing, rate negotiation trucking, freight route optimization, dispatch paperwork management, 24/7 truck dispatch, full service truck dispatch" },
       { property: "og:title", content: "Our Truck Dispatch Services" },

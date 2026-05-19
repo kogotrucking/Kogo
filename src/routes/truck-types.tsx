@@ -9,7 +9,7 @@ import heroImg from "@/assets/hero-trucktypes.webp";
 export const Route = createFileRoute("/truck-types")({
   head: () => ({
     meta: [
-      { title: "Truck Dispatch for All Truck Types — Reefer, Flatbed, Dry Van & More" },
+      { title: "Truck Dispatch for All Truck Types | Reefer, Flatbed, Dry Van & More" },
       { name: "description", content: "Truck dispatch services for reefer, flatbed, dry van, step deck, lowboy, power only, box truck, hot shot, tanker and expedited freight." },
       { name: "keywords", content: "reefer dispatch, flatbed dispatch, dry van dispatch, step deck dispatch, hot shot dispatch, box truck dispatcher, power only dispatch, tanker dispatch" },
       { property: "og:title", content: "Truck Dispatch Services for Every Truck Type" },
@@ -41,14 +41,14 @@ const Truck5Icon = (props: any) => (
 
 const types = [
   { title: "Refrigerated (Reefer) Truck Dispatch", icon: Truck1Icon, desc: "Temperature-controlled reefer freight including food and pharmaceuticals. Standard 53 ft reefer trailers with insulated walls and up to 44,000 lbs capacity." },
-  { title: "Flatbed Truck Dispatch", icon: Truck2Icon, desc: "Construction materials, steel and heavy industrial freight. Trailer sizes 48–53 ft with up to 48,000 lbs weight capacity." },
+  { title: "Flatbed Truck Dispatch", icon: Truck2Icon, desc: "Construction materials, steel and heavy industrial freight. Trailer sizes 48 to 53 ft with up to 48,000 lbs weight capacity." },
   { title: "Dry Van Truck Dispatch", icon: Truck3Icon, desc: "Standard dry van trucking on all major US lanes. Typical 53 ft trailer, 8.5 ft wide, 9 ft tall, up to 45,000 lbs payload." },
-  { title: "Step Deck (Drop Deck) Dispatch", icon: Truck4Icon, desc: "Oversized and tall cargo requiring lower deck clearance. 48–53 ft trailers, up to 48,000 lbs and 10–11 ft height clearance." },
-  { title: "Double Drop / Lowboy Dispatch", icon: Truck5Icon, desc: "Heavy haul and oversized machinery. Lowboy and double drop trailers carry 40,000–80,000+ lbs with proper permits." },
+  { title: "Step Deck (Drop Deck) Dispatch", icon: Truck4Icon, desc: "Oversized and tall cargo requiring lower deck clearance. 48 to 53 ft trailers, up to 48,000 lbs and 10 to 11 ft height clearance." },
+  { title: "Double Drop / Lowboy Dispatch", icon: Truck5Icon, desc: "Heavy haul and oversized machinery. Lowboy and double drop trailers carry 40,000 to 80,000+ lbs with proper permits." },
   { title: "Power Only Dispatch", icon: Truck4Icon, desc: "We connect tractors with available trailers across the US freight network. Loads up to 45,000 lbs depending on equipment." },
-  { title: "Box Truck / Straight Truck Dispatch", icon: Truck1Icon, desc: "Local and regional box truck freight. Common sizes 12, 16, 24 and 26 ft with 10,000–12,000 lbs capacity." },
-  { title: "Hot Shot Truck Dispatch", icon: Truck2Icon, desc: "Pickup trucks with gooseneck or small trailers for expedited regional deliveries. Typical loads 2,000–16,000 lbs." },
-  { title: "Tanker Truck Dispatch", icon: Truck4Icon, desc: "Liquid freight including fuel, chemicals and food-grade liquids. Generally 7,000–11,000 gallons depending on material." },
+  { title: "Box Truck / Straight Truck Dispatch", icon: Truck1Icon, desc: "Local and regional box truck freight. Common sizes 12, 16, 24 and 26 ft with 10,000 to 12,000 lbs capacity." },
+  { title: "Hot Shot Truck Dispatch", icon: Truck2Icon, desc: "Pickup trucks with gooseneck or small trailers for expedited regional deliveries. Typical loads 2,000 to 16,000 lbs." },
+  { title: "Tanker Truck Dispatch", icon: Truck4Icon, desc: "Liquid freight including fuel, chemicals and food-grade liquids. Generally 7,000 to 11,000 gallons depending on material." },
   { title: "Expedited Truck Dispatch", icon: Truck2Icon, desc: "Urgent freight dispatch for time-sensitive shipments. Typically under 20,000 lbs with flexible truck and trailer requirements." },
 ];
 

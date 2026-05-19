@@ -14,8 +14,8 @@ import heroImg from "@/assets/hero-truck.jpg";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact KOGO Dispatchers — Get a Dedicated Truck Dispatcher" },
-      { name: "description", content: "Contact KOGO Dispatchers to start moving more freight. Call, email or send us a message — a dedicated dispatcher will get back to you fast." },
+      { title: "Contact KOGO Dispatchers | Get a Dedicated Truck Dispatcher" },
+      { name: "description", content: "Contact KOGO Dispatchers to start moving more freight. Call, email or send us a message, a dedicated dispatcher will get back to you fast." },
       { name: "keywords", content: "contact truck dispatcher, hire truck dispatcher, get truck loads, sign up for truck dispatch, kogo dispatchers phone number, trucking logistics contact" },
       { property: "og:title", content: "Contact KOGO Dispatchers" },
       { property: "og:description", content: "Get in touch with our dispatch team. Available 24/7 across the USA." },
@@ -77,7 +77,7 @@ function ContactPage() {
             {[
               { icon: MapPin, label: "Office", value: "0811 Erdman Prairie, CA 1101" },
               { icon: Phone, label: "Phone", value: "+1 (234) 567 890 00" },
-              { icon: Mail, label: "Email", value: "info@kogodispatchers.com" },
+              // { icon: Mail, label: "Email", value: "info@kogodispatchers.com" },
             ].map((c) => (
               <Card key={c.label} className="border-border/60">
                 <CardContent className="flex items-start gap-4 p-5">

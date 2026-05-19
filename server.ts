@@ -23,8 +23,8 @@ async function startServer() {
       const resend = new Resend(resendApiKey);
 
       const data = await resend.emails.send({
-        from: 'onboarding@resend.dev', // Default resend testing email
-        to: 'ateeqwrk1@gmail.com', // Sends to the user who requested this
+        from: 'KOGO Contact <noreply@kogodispatchers.com>', // User's verified domain
+        to: 'kogotrucking@gmail.com', // Sends to the user who requested this
         subject: `New Contact Form Submission from ${name}`,
         html: `
           <h3>New Contact Request</h3>

@@ -8,14 +8,14 @@ import heroImg from "@/assets/hero-faq.webp";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQs — KOGO Dispatchers Truck Dispatch Services" },
+      { title: "FAQs | KOGO Dispatchers Truck Dispatch Services" },
       {
         name: "description",
         content:
-          "Answers to common questions about KOGO Dispatchers — pricing, supported truck types, onboarding, 24/7 support and more.",
+          "Answers to common questions about KOGO Dispatchers: pricing, supported truck types, onboarding, 24/7 support and more.",
       },
       { name: "keywords", content: "truck dispatch faq, truck dispatching questions, dispatcher requirements, cost of truck dispatcher, how to hire a dispatcher" },
-      { property: "og:title", content: "Frequently Asked Questions — KOGO Dispatchers" },
+      { property: "og:title", content: "Frequently Asked Questions | KOGO Dispatchers" },
       { property: "og:description", content: "Everything you need to know about working with KOGO Dispatchers." },
     ],
     scripts: [
@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     q: "Why choose KOGO Dispatchers over other dispatch companies?",
-    a: "KOGO Dispatchers provides dedicated personal dispatchers, strong rate negotiation, access to premium freight, 24/7 driver support, transparent communication, and no hidden fees. We don't just dispatch loads — we partner in your success.",
+    a: "KOGO Dispatchers provides dedicated personal dispatchers, strong rate negotiation, access to premium freight, 24/7 driver support, transparent communication, and no hidden fees. We don't just dispatch loads, we partner in your success.",
   },
   {
     q: "How do you find high-paying loads?",
@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     q: "How quickly can I start working with KOGO Dispatchers?",
-    a: "Getting started is simple and fast. Contact us via phone or email, complete a quick onboarding process, and we'll begin dispatching for you right away — often within 24 hours.",
+    a: "Getting started is simple and fast. Contact us via phone or email, complete a quick onboarding process, and we'll begin dispatching for you right away, often within 24 hours.",
   },
 ];
 

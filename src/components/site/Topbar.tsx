@@ -8,12 +8,12 @@ export function Topbar() {
           <MapPin className="h-4 w-4" />
           <span>034 Erling Knolls, Dakota 8902</span>
         </div>
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <Mail className="h-4 w-4" />
           <a href="mailto:info@kogodispatchers.com" className="hover:underline">
             info@kogodispatchers.com
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

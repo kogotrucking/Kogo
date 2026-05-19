@@ -10,8 +10,8 @@ import heroImg from "@/assets/hero-about.webp";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About KOGO Dispatchers — Trusted Truck Dispatch Partner" },
-      { name: "description", content: "Learn about KOGO Dispatchers — our vision, mission and commitment to helping owner-operators and small fleets grow with reliable dispatch." },
+      { title: "About KOGO Dispatchers | Trusted Truck Dispatch Partner" },
+      { name: "description", content: "Learn about KOGO Dispatchers, our vision, mission and commitment to helping owner-operators and small fleets grow with reliable dispatch." },
       { name: "keywords", content: "about kogo dispatchers, truck dispatch company, reliable truck dispatcher, best truck dispatchers usa, professional truck dispatch" },
       { property: "og:title", content: "About KOGO Dispatchers" },
       { property: "og:description", content: "We build long-term trucking partnerships rooted in trust, performance and reliability." },
@@ -31,7 +31,7 @@ function AboutPage() {
             transition={{ duration: 1.5, ease: "easeOut" }}
             src={heroImg} 
             alt="Truck on scenic American highway" 
-            className="h-full w-full object-cover" 
+            className="h-full w-full object-cover object-[center_65%]" 
             loading="eager" 
             decoding="async" 
           />
@@ -45,7 +45,7 @@ function AboutPage() {
         >
           <span className="inline-block rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider ring-1 ring-accent/40">About Us</span>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold md:text-5xl">Trusted & Reliable Dispatch Services</h1>
-          <p className="mt-4 max-w-2xl text-white/85">At KOGO Dispatchers we believe in building long-term partnerships based on trust, performance, and reliability. Your success is our priority — we are driven to keep you moving forward.</p>
+          <p className="mt-4 max-w-2xl text-white/85">At KOGO Dispatchers we believe in building long-term partnerships based on trust, performance, and reliability. Your success is our priority, we are driven to keep you moving forward.</p>
         </motion.div>
       </section>
 
@@ -114,7 +114,7 @@ function AboutPage() {
         >
           {[
             { icon: ShieldCheck, title: "Trust & Transparency", desc: "Honest communication and complete clarity on every load and decision." },
-            { icon: Award, title: "Performance", desc: "Data-driven dispatching focused on real outcomes — more loaded miles and higher RPM." },
+            { icon: Award, title: "Performance", desc: "Data-driven dispatching focused on real outcomes: more loaded miles and higher RPM." },
             { icon: Target, title: "Partnership", desc: "We treat your business like our own and grow alongside you." },
           ].map((v) => (
             <motion.div 

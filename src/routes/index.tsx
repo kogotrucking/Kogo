@@ -6,21 +6,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import {
   Truck, DollarSign, Phone, MapPin, FileText, Route as RouteIcon,
-  TrendingUp, Headphones, Shield, Users, Clock, CheckCircle2, ArrowRight,
+  TrendingUp, Headphones, Shield, Users, Clock, CheckCircle2, ArrowRight, Star
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import heroImg from "@/assets/hero-header.webp";
 import truckImg from "@/assets/kogo-truck.png";
 import heroAbout from "@/assets/hero-about.webp";
 import heroServices from "@/assets/hero-services.webp";
+import { reviews } from "@/data/reviews";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "KOGO Dispatchers — Truck Dispatch Services for Owner-Operators & Fleets" },
+      { title: "KOGO Dispatchers | Truck Dispatch Services for Owner-Operators & Fleets" },
       { name: "description", content: "Partner with KOGO Dispatchers for high-paying loads, 24/7 support and nationwide US coverage. We dispatch, you drive, you grow." },
       { name: "keywords", content: "truck dispatch, truck dispatch services, owner operator dispatch, freight dispatch, high paying truck loads, CDL dispatcher, dispatching company, USA dispatch, kogo dispatchers" },
-      { property: "og:title", content: "KOGO Dispatchers — You Drive. We Dispatch. You Grow." },
+      { property: "og:title", content: "KOGO Dispatchers | You Drive. We Dispatch. You Grow." },
       { property: "og:description", content: "More loads. More miles. More profits. Trusted truck dispatch services across the USA." },
       { property: "og:image", content: heroImg },
       { name: "twitter:image", content: heroImg },
@@ -41,7 +42,7 @@ const services = [
   { icon: TrendingUp, title: "Advanced Rate Negotiation", desc: "Our dispatchers leverage market data to lock in competitive rates and increase your revenue per mile." },
   { icon: RouteIcon, title: "Route Optimization", desc: "Smart route planning that reduces deadhead miles, saves fuel, and maximizes loaded miles every week." },
   { icon: Phone, title: "Broker & Shipper Communication", desc: "We handle all calls, confirmations, and coordination so loads get booked and moving fast." },
-  { icon: FileText, title: "Documentation & Billing", desc: "Rate confirmations, BOLs, invoicing — full paperwork management for hassle-free operations." },
+  { icon: FileText, title: "Documentation & Billing", desc: "Rate confirmations, BOLs, invoicing, full paperwork management for hassle-free operations." },
   { icon: Headphones, title: "24/7 Dispatch Support", desc: "Real-time, round-the-clock assistance that keeps your business running without interruption." },
 ];
 
@@ -55,7 +56,7 @@ const why = [
 ];
 
 const steps = [
-  { n: "01", title: "Quick Onboarding", desc: "Share your MC, truck type and lane preferences — we set you up to start hauling fast.", img: heroImg },
+  { n: "01", title: "Quick Onboarding", desc: "Share your MC, truck type and lane preferences, we set you up to start hauling fast.", img: heroImg },
   { n: "02", title: "Load Search & Planning", desc: "We mine premium boards and broker networks and plan routes to maximize profit.", img: heroAbout },
   { n: "03", title: "Rate Negotiation & Booking", desc: "We negotiate top rates and lock in confirmed loads on your behalf.", img: truckImg },
   { n: "04", title: "Dispatch & 24/7 Support", desc: "We dispatch, manage paperwork, and support every trip end-to-end.", img: heroServices },
@@ -194,7 +195,7 @@ function HomePage() {
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Trusted & Reliable Dispatch Services</h2>
             <p className="mt-4 text-muted-foreground">
               At KOGO Dispatchers we build long-term partnerships rooted in trust, performance and reliability.
-              Your success is our priority — we are driven to keep you moving forward.
+              Your success is our priority, we are driven to keep you moving forward.
             </p>
             <ul className="mt-6 space-y-3">
               {["Owner-operator focused", "Small fleet friendly", "Nationwide load coverage"].map((t) => (
@@ -284,7 +285,7 @@ function HomePage() {
 
       {/* WHY */}
       <Section className="bg-secondary/40">
-        <SectionHeader eyebrow="Why Choose Us" title="Your Success Starts with the Right Dispatcher" subtitle="We don't just book loads — we build long-term partnerships with truckers who want consistent income and less stress." />
+        <SectionHeader eyebrow="Why Choose Us" title="Your Success Starts with the Right Dispatcher" subtitle="We don't just book loads, we build long-term partnerships with truckers who want consistent income and less stress." />
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -319,7 +320,7 @@ function HomePage() {
 
       {/* PROCESS */}
       <Section>
-        <SectionHeader eyebrow="How It Works" title="Simple, Efficient Process" subtitle="From onboarding to delivery — a streamlined workflow that keeps revenue flowing." />
+        <SectionHeader eyebrow="How It Works" title="Simple, Efficient Process" subtitle="From onboarding to delivery, a streamlined workflow that keeps revenue flowing." />
         <div className="relative mx-auto mt-16 max-w-5xl">
           {/* Vertical Timeline Line */}
           <motion.div 
@@ -370,6 +371,46 @@ function HomePage() {
             })}
           </div>
         </div>
+      </Section>
+
+      {/* REVIEWS */}
+      <Section className="bg-secondary/40">
+        <SectionHeader eyebrow="Testimonials" title="What Our Partners Say" subtitle="Don't just take our word for it. See why truckers across the country trust KOGO Dispatchers." />
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 }
+            }
+          }}
+          className="grid gap-6 md:grid-cols-3"
+        >
+          {reviews.map((r) => (
+            <motion.div 
+              key={r.id} 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border/40 bg-card/60 backdrop-blur-sm p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/10"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="relative flex-1">
+                <div className="flex gap-1 mb-6 text-yellow-500">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className={`h-5 w-5 ${i < r.rating ? "fill-current" : "opacity-30"}`} />
+                  ))}
+                </div>
+                <p className="text-base text-muted-foreground leading-relaxed italic">"{r.review}"</p>
+              </div>
+              <div className="relative mt-8 border-t border-border/40 pt-6">
+                <p className="font-bold tracking-tight">{r.name}</p>
+                <p className="text-sm text-muted-foreground">{r.role}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </Section>
 
       {/* CTA */}

@@ -9,6 +9,7 @@ const ContactSchema = z.object({
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(50).optional().or(z.literal("")),
+  mcNumber: z.string().trim().max(50).optional().or(z.literal("")),
   truck: z.string().trim().max(100).optional().or(z.literal("")),
   message: z.string().trim().min(1).max(2000),
 });
@@ -50,9 +51,12 @@ export default async function handler(req: any, res: any) {
     });
   }
 
-  const toEmail = process.env.CONTACT_TO_EMAIL || "info@kogodispatchers.com";
+  const toEmail = process.env.CONTACT_TO_EMAIL || "kogotrucking@gmail.com";
+  
+  // Since the user attached their own domain to Resend, sending FROM a verified domain is much better for deliverability.
+  // Using onboarding@resend.dev works only if sending to the registered email in Resend, but providing a custom from email ensures it uses their custom domain properly.
   const fromEmail =
-    process.env.CONTACT_FROM_EMAIL || "KOGO Contact <onboarding@resend.dev>";
+    process.env.CONTACT_FROM_EMAIL || "KOGO Contact <noreply@kogodispatchers.com>"; // assuming their domain is kogodispatchers.com. It's safe to use onboarding@resend.dev fallback if they haven't verified a specific from-address, but Resend prefers using your own domain like noreply@yourdomain.com
 
   const html = `
     <h2>New Contact Form Submission — KOGO Dispatchers</h2>
@@ -60,6 +64,7 @@ export default async function handler(req: any, res: any) {
       <tr><td style="padding:6px 12px;font-weight:bold;">Name:</td><td style="padding:6px 12px;">${escapeHtml(data.name)}</td></tr>
       <tr><td style="padding:6px 12px;font-weight:bold;">Email:</td><td style="padding:6px 12px;">${escapeHtml(data.email)}</td></tr>
       <tr><td style="padding:6px 12px;font-weight:bold;">Phone:</td><td style="padding:6px 12px;">${escapeHtml(data.phone || "—")}</td></tr>
+      <tr><td style="padding:6px 12px;font-weight:bold;">MC Number:</td><td style="padding:6px 12px;">${escapeHtml(data.mcNumber || "—")}</td></tr>
       <tr><td style="padding:6px 12px;font-weight:bold;">Truck Type:</td><td style="padding:6px 12px;">${escapeHtml(data.truck || "—")}</td></tr>
       <tr><td style="padding:6px 12px;font-weight:bold;vertical-align:top;">Message:</td><td style="padding:6px 12px;white-space:pre-wrap;">${escapeHtml(data.message)}</td></tr>
     </table>

@@ -13,7 +13,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 const SITE_URL = "https://kogodispatchers.com";
 const DEFAULT_TITLE =
-  "KOGO Dispatchers — Truck Dispatch Services for Owner-Operators & Fleets";
+  "KOGO Dispatchers | Truck Dispatch Services for Owner-Operators & Fleets";
 const DEFAULT_DESC =
   "KOGO Dispatchers helps owner-operators and small fleets in the USA find high-paying loads, reduce deadhead miles, and grow profits. 24/7 dispatch support.";
 
